@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from './pages/layout';
+import Home from './pages/home';
+import Addresses from './pages/addresses';
+import Carts from './pages/carts';
+import Customers from './pages/customers';
+import Orders from './pages/orders';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/addresses" element={<Addresses />} />
+          <Route path="/carts" element={<Carts />} />
+          <Route path="/orders" element={<Orders />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
